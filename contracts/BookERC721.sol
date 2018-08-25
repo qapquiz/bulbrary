@@ -6,6 +6,8 @@ contract BookERC721 is ERC721Token {
     string public constant name = "BBToken";
     string public constant symbol = "BBT";
 
+    constructor(string _name, string _symbol) ERC721Token(_name, _symbol) public {}
+
     struct Book {
         string title;
         string hashImage;
