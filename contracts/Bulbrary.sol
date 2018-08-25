@@ -10,7 +10,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 contract Bulbrary is Ownable {
 
     constructor() public {
-        
+        balance = 1000;
     }
 
 

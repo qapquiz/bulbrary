@@ -7,6 +7,12 @@
       "name": "renounceOwnership",
       "outputs": [],
       "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
@@ -152,6 +158,32 @@
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 3,
+            "name": "balance",
+            "nodeType": "VariableDeclaration",
+            "scope": 24,
+            "src": "49:19:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
               "id": 65,
               "nodeType": "Block",
@@ -293,6 +325,32 @@
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 3,
+            "name": "balance",
+            "nodeType": "VariableDeclaration",
+            "scope": 24,
+            "src": "49:19:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
               "id": 65,
               "nodeType": "Block",
@@ -371,7 +429,14 @@
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xead03895dc7f38d896fc8db4bca0818ab25f0cbe",
+      "transactionHash": "0x5f256ad13cf1d8db95f0fcb8f44366a90dbebea29f5a97f116fc256c773d0cf6"
+    }
+  },
   "schemaVersion": "2.0.1",
   "updatedAt": "2018-08-25T10:16:00.473Z"
 }
