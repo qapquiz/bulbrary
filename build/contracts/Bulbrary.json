@@ -2,6 +2,20 @@
   "contractName": "Bulbrary",
   "abi": [
     {
+      "constant": true,
+      "inputs": [],
+      "name": "balance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -11,22 +25,36 @@
       "payable": true,
       "stateMutability": "payable",
       "type": "fallback"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603280601d6000396000f30060806040520000a165627a7a72305820ed7164b9d272128743322e007eec64593d35eddab5d4d257b11d1def3cae0ccd0029",
-  "deployedBytecode": "0x60806040520000a165627a7a72305820ed7164b9d272128743322e007eec64593d35eddab5d4d257b11d1def3cae0ccd0029",
-  "sourceMap": "25:144:0:-;;;55:37;8:9:-1;5:2;;;30:1;27;20:12;5:2;55:37:0;25:144;;;;;;",
-  "deployedSourceMap": "25:144:0:-;;;",
-  "source": "pragma solidity 0.4.24;\n\ncontract Bulbrary {\n    \n\n    constructor() public {\n        \n    }\n\n    // Fallback function\n    function() external payable {\n        \n    }\n}\n",
+  "bytecode": "0x608060405234801561001057600080fd5b506103e860008190555060d6806100286000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806312065fe014604b578063b69ef8a8146073575b005b348015605657600080fd5b50605d609b565b6040518082815260200191505060405180910390f35b348015607e57600080fd5b50608560a4565b6040518082815260200191505060405180910390f35b60008054905090565b600054815600a165627a7a72305820b52a3992e33dd6ca8a7016ecf5b9d3593e2448283b99bd00f942e9d7bf7046370029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806312065fe014604b578063b69ef8a8146073575b005b348015605657600080fd5b50605d609b565b6040518082815260200191505060405180910390f35b348015607e57600080fd5b50608560a4565b6040518082815260200191505060405180910390f35b60008054905090565b600054815600a165627a7a72305820b52a3992e33dd6ca8a7016ecf5b9d3593e2448283b99bd00f942e9d7bf7046370029",
+  "sourceMap": "25:263:0:-;;;75:52;8:9:-1;5:2;;;30:1;27;20:12;5:2;75:52:0;116:4;106:7;:14;;;;25:263;;;;;;",
+  "deployedSourceMap": "25:263:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;133:78;;8:9:-1;5:2;;;30:1;27;20:12;5:2;133:78:0;;;;;;;;;;;;;;;;;;;;;;;49:19;;8:9:-1;5:2;;;30:1;27;20:12;5:2;49:19:0;;;;;;;;;;;;;;;;;;;;;;;133:78;175:4;197:7;;190:14;;133:78;:::o;49:19::-;;;;:::o",
+  "source": "pragma solidity 0.4.24;\n\ncontract Bulbrary {\n    uint public balance;\n\n    constructor() public {\n        balance = 1000;\n    }\n\n    function getBalance() public view returns(uint){\n        return balance;\n    }\n\n    // Fallback function\n    function() external payable {\n        \n    }\n}\n",
   "sourcePath": "/Users/nan-dgt/Desktop/bulbrary/contracts/Bulbrary.sol",
   "ast": {
     "absolutePath": "/Users/nan-dgt/Desktop/bulbrary/contracts/Bulbrary.sol",
     "exportedSymbols": {
       "Bulbrary": [
-        10
+        24
       ]
     },
-    "id": 11,
+    "id": 25,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -45,22 +73,100 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 10,
+        "id": 24,
         "linearizedBaseContracts": [
-          10
+          24
         ],
         "name": "Bulbrary",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 3,
+            "name": "balance",
+            "nodeType": "VariableDeclaration",
+            "scope": 24,
+            "src": "49:19:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
-              "id": 4,
+              "id": 10,
               "nodeType": "Block",
-              "src": "76:16:0",
-              "statements": []
+              "src": "96:31:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6,
+                      "name": "balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "106:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31303030",
+                      "id": 7,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "116:4:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1000_by_1",
+                        "typeString": "int_const 1000"
+                      },
+                      "value": "1000"
+                    },
+                    "src": "106:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9,
+                  "nodeType": "ExpressionStatement",
+                  "src": "106:14:0"
+                }
+              ]
             },
             "documentation": null,
-            "id": 5,
+            "id": 11,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -68,33 +174,114 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2,
+              "id": 4,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "66:2:0"
+              "src": "86:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3,
+              "id": 5,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "76:0:0"
+              "src": "96:0:0"
             },
-            "scope": 10,
-            "src": "55:37:0",
+            "scope": 24,
+            "src": "75:52:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 8,
+              "id": 18,
               "nodeType": "Block",
-              "src": "151:16:0",
+              "src": "180:31:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 16,
+                    "name": "balance",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 3,
+                    "src": "197:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 15,
+                  "id": 17,
+                  "nodeType": "Return",
+                  "src": "190:14:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 19,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBalance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "152:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "175:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "175:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "174:6:0"
+            },
+            "scope": 24,
+            "src": "133:78:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 22,
+              "nodeType": "Block",
+              "src": "270:16:0",
               "statements": []
             },
             "documentation": null,
-            "id": 9,
+            "id": 23,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -102,39 +289,39 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6,
+              "id": 20,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "131:2:0"
+              "src": "250:2:0"
             },
             "payable": true,
             "returnParameters": {
-              "id": 7,
+              "id": 21,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "151:0:0"
+              "src": "270:0:0"
             },
-            "scope": 10,
-            "src": "123:44:0",
+            "scope": 24,
+            "src": "242:44:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 11,
-        "src": "25:144:0"
+        "scope": 25,
+        "src": "25:263:0"
       }
     ],
-    "src": "0:170:0"
+    "src": "0:289:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/nan-dgt/Desktop/bulbrary/contracts/Bulbrary.sol",
     "exportedSymbols": {
       "Bulbrary": [
-        10
+        24
       ]
     },
-    "id": 11,
+    "id": 25,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -153,22 +340,100 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 10,
+        "id": 24,
         "linearizedBaseContracts": [
-          10
+          24
         ],
         "name": "Bulbrary",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 3,
+            "name": "balance",
+            "nodeType": "VariableDeclaration",
+            "scope": 24,
+            "src": "49:19:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "49:4:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
-              "id": 4,
+              "id": 10,
               "nodeType": "Block",
-              "src": "76:16:0",
-              "statements": []
+              "src": "96:31:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6,
+                      "name": "balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "106:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31303030",
+                      "id": 7,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "116:4:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1000_by_1",
+                        "typeString": "int_const 1000"
+                      },
+                      "value": "1000"
+                    },
+                    "src": "106:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 9,
+                  "nodeType": "ExpressionStatement",
+                  "src": "106:14:0"
+                }
+              ]
             },
             "documentation": null,
-            "id": 5,
+            "id": 11,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -176,33 +441,114 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2,
+              "id": 4,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "66:2:0"
+              "src": "86:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3,
+              "id": 5,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "76:0:0"
+              "src": "96:0:0"
             },
-            "scope": 10,
-            "src": "55:37:0",
+            "scope": 24,
+            "src": "75:52:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 8,
+              "id": 18,
               "nodeType": "Block",
-              "src": "151:16:0",
+              "src": "180:31:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 16,
+                    "name": "balance",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 3,
+                    "src": "197:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 15,
+                  "id": 17,
+                  "nodeType": "Return",
+                  "src": "190:14:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 19,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBalance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "152:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "175:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "175:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "174:6:0"
+            },
+            "scope": 24,
+            "src": "133:78:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 22,
+              "nodeType": "Block",
+              "src": "270:16:0",
               "statements": []
             },
             "documentation": null,
-            "id": 9,
+            "id": 23,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -210,30 +556,30 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6,
+              "id": 20,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "131:2:0"
+              "src": "250:2:0"
             },
             "payable": true,
             "returnParameters": {
-              "id": 7,
+              "id": 21,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "151:0:0"
+              "src": "270:0:0"
             },
-            "scope": 10,
-            "src": "123:44:0",
+            "scope": 24,
+            "src": "242:44:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 11,
-        "src": "25:144:0"
+        "scope": 25,
+        "src": "25:263:0"
       }
     ],
-    "src": "0:170:0"
+    "src": "0:289:0"
   },
   "compiler": {
     "name": "solc",
@@ -243,10 +589,10 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0xf1c886107f56cefc7785a2451bd967dfe6cdc603",
-      "transactionHash": "0xf412775e0ccd7dd70cb6a91b1bd672b7a4e25fe9cb2c773da2caa2c183ac195b"
+      "address": "0xead03895dc7f38d896fc8db4bca0818ab25f0cbe",
+      "transactionHash": "0x5f256ad13cf1d8db95f0fcb8f44366a90dbebea29f5a97f116fc256c773d0cf6"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-25T07:56:37.251Z"
+  "updatedAt": "2018-08-25T08:18:48.440Z"
 }
