@@ -6,6 +6,10 @@ import Bulbrary from './contracts/Bulbrary.json';
 import Web3 from 'web3';
 
 class App extends Component {
+  state = {
+    
+  }
+  
   async componentDidMount() {
     const web3 = await Web3Helper.getWeb3();
     const contractAddress = Bulbrary.networks['42'].address;
