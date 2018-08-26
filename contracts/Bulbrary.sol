@@ -30,6 +30,12 @@ contract Bulbrary is Ownable {
         _;
     }
 
+    modifier mustBeOwnerOfTheBook(address _address, uint _bookId) {
+        require(bookERC721Instance.isOwnerOfTheBook(msg.sender, _bookId), "This book is not owned by this seller.");
+        _;
+    } 
+
+
     // book
     // registerBook => A token
     // seller => A token => buyer
@@ -70,10 +76,8 @@ contract Bulbrary is Ownable {
     }
 
     // seller call
-    function stakeBook(uint _bookId, string _trackingNumber) public {
-        // msg.sender call
-        address seller = msg.sender;
-        bookERC721Instance.transferFrom(seller, address(this), _bookId);
+    function stakeBook(uint _bookId, string _trackingNumber) public mustBeOwnerOfTheBook(msg.sender, _bookId) {
+        bookERC721Instance.transferFrom(msg.sender, owner, _bookId);
         addTrackingNumber(_bookId, _trackingNumber);
     }
 
@@ -103,7 +107,7 @@ contract Bulbrary is Ownable {
     } 
 
     // owner approve automatic by server check after approximately 2 days
-    function approveReceivedBook(uint _bookId) public onlyOwner {
+    function approveReceivedBook(uint _bookId) public mustBeOwnerOfTheBook(owner, _bookId) onlyOwner {
         require(_bookId >= 0, "bookId is index of array so that mean must greater than 0");
         require(booksReserveBy[_bookId] != 0x0, "book must be reserved by someone.");
 
@@ -116,7 +120,7 @@ contract Bulbrary is Ownable {
         swapBookOwner(_bookId, buyer);
 
         // send token to buyer
-        bookERC721Instance.transferFrom(address(this), buyer, _bookId);
+        bookERC721Instance.transferFrom(owner, buyer, _bookId);
 
         // send ether to seller
         seller.transfer(price);
