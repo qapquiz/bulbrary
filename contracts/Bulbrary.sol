@@ -14,12 +14,12 @@ contract Bulbrary is Ownable {
     }
 
     BookERC721 private bookERC721Instance;
-    mapping (uint => bool) private booksReserve; // bookId => boolean // true => reserve
-    mapping (uint => address) private booksReserveBy; // bookId => address
-    mapping (uint => address) private bookSellBy; // bookId => address
-    mapping (address => uint256) private stakes; // address => sum of stake
-    mapping (uint => uint32) private booksCanCancelAfter; // bookId => timestamp
-    mapping (uint => string) private booksTrackingNumbers; // bookId => trackingNumber
+    mapping (uint => bool) public booksReserve; // bookId => boolean // true => reserve
+    mapping (uint => address) public booksReserveBy; // bookId => address
+    mapping (uint => address) public bookSellBy; // bookId => address
+    mapping (address => uint256) public stakes; // address => sum of stake
+    mapping (uint => uint32) public booksCanCancelAfter; // bookId => timestamp
+    mapping (uint => string) public booksTrackingNumbers; // bookId => trackingNumber
 
     constructor(address _bookERC721Address) public {
         bookERC721Instance = BookERC721(_bookERC721Address); 
@@ -84,7 +84,7 @@ contract Bulbrary is Ownable {
         return booksTrackingNumbers[_bookId];
     }
 
-    function addTrackingNumber(uint _bookId, string _trackingNumber) private bookMustReserve(_bookId) {
+    function addTrackingNumber(uint _bookId, string _trackingNumber) public bookMustReserve(_bookId) {
         booksTrackingNumbers[_bookId] = _trackingNumber;
     }
 
@@ -105,7 +105,6 @@ contract Bulbrary is Ownable {
         buyer.transfer(price);
     } 
 
-    // owner approve automatic by server check after approximately 2 days
     function approveReceivedBook(uint _bookId) public mustBeOwnerOfTheBook(owner, _bookId) onlyOwner {
         require(_bookId >= 0, "bookId is index of array so that mean must greater than 0");
         require(booksReserveBy[_bookId] != 0x0, "book must be reserved by someone.");
@@ -115,14 +114,19 @@ contract Bulbrary is Ownable {
         (, , , , uint price) = bookERC721Instance.getBook(_bookId);
 
         subtractBuyerStake(buyer, price);
-        clearReserveBook(_bookId);
-        swapBookOwner(_bookId, buyer);
+        
 
         // send token to buyer
-        bookERC721Instance.transferFrom(owner, buyer, _bookId);
+        // bookERC721Instance.transferFrom(owner, buyer, _bookId);
 
         // send ether to seller
         seller.transfer(price);
+    }
+
+    function clearEverything(uint _bookId) public onlyOwner {
+        address buyer = booksReserveBy[_bookId];
+        clearReserveBook(_bookId);
+        swapBookOwner(_bookId, buyer);
     }
 
     function clearReserveBook(uint _bookId) private {
@@ -137,6 +141,10 @@ contract Bulbrary is Ownable {
 
     function swapBookOwner(uint _bookId, address newOwner) public {
         bookSellBy[_bookId] = newOwner;
+    }
+
+    function getBooksReserveBy(uint _bookId) public view returns (address) {
+        return booksReserveBy[_bookId];
     }
 
     // Fallback function

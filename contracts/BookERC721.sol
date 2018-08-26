@@ -15,8 +15,8 @@ contract BookERC721 is ERC721Token {
 
     Book[] public books;
 
-    function stakeBook(uint _bookId) public {
-        this.transferFrom(msg.sender, owner, _bookId);
+    function stakeBook(uint _bookId, address _mainOwner) public {
+        this.transferFrom(msg.sender, _mainOwner, _bookId);
     }
 
     function getBookPrice(uint _bookId) external view returns (uint) {
@@ -30,7 +30,7 @@ contract BookERC721 is ERC721Token {
         require(_userAddress != address(0), "you forget to send seller address to us.");
         require(_bookId >= 0, "bookId is index of array so that mean must greater than 0");
 
-        return _userAddress != this.ownerOf(_bookId);
+        return _userAddress == this.ownerOf(_bookId);
     }
 
     function getBook(uint _bookId) external view returns (string, string, string, string, uint) {
