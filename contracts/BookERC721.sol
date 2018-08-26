@@ -3,10 +3,7 @@ pragma solidity 0.4.24;
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 
 contract BookERC721 is ERC721Token {
-    string public constant name = "BBToken";
-    string public constant symbol = "BBT";
-
-    constructor(string _name, string _symbol) ERC721Token(_name, _symbol) public {}
+    constructor() ERC721Token("BBToken", "BBT") public {}
 
     struct Book {
         string title;

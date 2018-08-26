@@ -26,7 +26,7 @@ contract Bulbrary is Ownable {
     }
 
     modifier bookMustReserve(uint _bookId) {
-        require(booksReserve[_bookId], "");
+        require(booksReserve[_bookId], "book must be reserve by someone.");
         _;
     }
 
@@ -87,7 +87,7 @@ contract Bulbrary is Ownable {
 
     // buyer call
     function cancelBuyRequest(uint _bookId) public bookMustReserve(_bookId) {
-        require(uint32(block.timestamp) >= booksCanCancelAfter[_bookId], "");
+        require(uint32(block.timestamp) >= booksCanCancelAfter[_bookId], "can cancel after 4 days of the date that you bought.");
         clearReserveBook(_bookId);
     }
 
@@ -105,7 +105,7 @@ contract Bulbrary is Ownable {
     // owner approve automatic by server check after approximately 2 days
     function approveReceivedBook(uint _bookId) public onlyOwner {
         require(_bookId >= 0, "bookId is index of array so that mean must greater than 0");
-        require(booksReserveBy[_bookId] != 0x0, "");
+        require(booksReserveBy[_bookId] != 0x0, "book must be reserved by someone.");
 
         address seller = bookSellBy[_bookId];
         address buyer = booksReserveBy[_bookId];
@@ -128,7 +128,7 @@ contract Bulbrary is Ownable {
     }
 
     function subtractBuyerStake(address _buyer, uint _bookPrice) private {
-        require(stakes[_buyer] > 0, "");
+        require(stakes[_buyer] >= _bookPrice, "stake of buyer must be greter or equal _bookPrice");
         stakes[_buyer] -= _bookPrice;
     }
 
