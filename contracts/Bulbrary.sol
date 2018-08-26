@@ -76,10 +76,9 @@ contract Bulbrary is Ownable {
     }
 
     // seller call
-    function stakeBook(uint _bookId, string _trackingNumber) public mustBeOwnerOfTheBook(msg.sender, _bookId) {
-        bookERC721Instance.transferFrom(msg.sender, owner, _bookId);
-        addTrackingNumber(_bookId, _trackingNumber);
-    }
+    // function stakeBook(uint _bookId) public mustBeOwnerOfTheBook(msg.sender, _bookId) {
+    //     bookERC721Instance.transferFrom(msg.sender, owner, _bookId);
+    // }
 
     function getTrackingNumber(uint _bookId) public view returns (string) {
         return booksTrackingNumbers[_bookId];
