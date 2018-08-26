@@ -15,6 +15,10 @@ contract BookERC721 is ERC721Token {
 
     Book[] public books;
 
+    function stakeBook(uint _bookId) public {
+        this.transferFrom(msg.sender, owner, _bookId);
+    }
+
     function getBookPrice(uint _bookId) external view returns (uint) {
         require(books.length >= _bookId, "_bookId cannot greter than books.length array.");
 
