@@ -50,7 +50,7 @@ contract Bulbrary is Ownable {
     ) 
         external
     {
-        uint bookId = bookERC721Instance.mint(_title, _hashImage, _author, _publisher, _price);
+        uint bookId = bookERC721Instance.mint(msg.sender, _title, _hashImage, _author, _publisher, _price);
         booksReserve[bookId] = false;
         booksReserveBy[bookId] = 0x0;
         bookSellBy[bookId] = msg.sender;
