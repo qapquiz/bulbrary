@@ -34,11 +34,11 @@ contract BookERC721 is ERC721Token {
         return (book.title, book.hashImage, book.author, book.publisher, book.price);
     }
 
-    function mint(string _title, string _hashImage, string _author, string _publisher, uint _price) public returns (uint) {
+    function mint(address _address, string _title, string _hashImage, string _author, string _publisher, uint _price) public returns (uint) {
         Book memory book = Book(_title, _hashImage, _author, _publisher, _price);
         uint bookId = books.push(book) - 1;
 
-        _mint(msg.sender, bookId);
+        _mint(_address, bookId);
 
         return bookId;
     }
